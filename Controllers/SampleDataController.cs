@@ -31,7 +31,7 @@ namespace angular.Controllers
             });
         }
 
-        // Hint: Set breakpoint on forecast to inspect object results
+        
          [HttpGet("[action]")]
         public TenDayForecast GetTenDayForecast()
         {
