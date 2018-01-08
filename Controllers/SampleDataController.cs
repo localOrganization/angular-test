@@ -15,9 +15,7 @@ namespace angular.Controllers
         private static string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
-        private const string forcast10day = "http://api.wunderground.com/api/14bbd739ef370568/forecast10day/q/OR/Sisters.json";
+        };        
 
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
@@ -29,23 +27,7 @@ namespace angular.Controllers
                 TemperatureC = rng.Next(-20, 55),
                 Summary = Summaries[rng.Next(Summaries.Length)]
             });
-        }
-
-        
-         [HttpGet("[action]")]
-        public TenDayForecast GetTenDayForecast()
-        {
-            string json = string.Empty;
-            using (WebClient client = new WebClient())
-            {
-               json = client.DownloadString(new Uri(forcast10day));
-            }
-
-            var forecast = JsonConvert.DeserializeObject<TenDayForecast>(json);
-
-            return forecast;
-        }
-
+        }       
         
     }
 }
